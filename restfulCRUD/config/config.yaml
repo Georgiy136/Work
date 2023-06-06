@@ -1,0 +1,17 @@
+http:
+ port: 8080
+
+postgres:
+ host: "127.0.0.1"
+ port: 5432
+ user: "postgres"
+ password: "4650"
+ dbname: "database"
+ sslmode: "disable"
+
+redis:
+ host: "127.0.0.1"
+ port: 6379
+
+auth:
+ key: "sUperSecret"

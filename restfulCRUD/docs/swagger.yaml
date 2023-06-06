@@ -1,0 +1,375 @@
+basePath: /
+definitions:
+  handler.Client:
+    properties:
+      login:
+        type: string
+      password:
+        type: string
+    required:
+    - login
+    - password
+    type: object
+  models.Client:
+    type: object
+  models.Operator:
+    type: object
+  models.Project:
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Swagger API for Golang Project
+  title: Swagger API
+  version: "1.0"
+paths:
+  /AddOperatorToProject/{project_id}/{operator_id}:
+    put:
+      consumes:
+      - application/json
+      description: add operator to project
+      operationId: add-operator-to-project
+      parameters:
+      - description: Project ID
+        in: path
+        name: project_id
+        required: true
+        type: string
+      - description: Operator ID
+        in: path
+        name: operator_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Project'
+      security:
+      - ApiKeyAuth: []
+      summary: Add Operator To Project
+      tags:
+      - Projects
+  /DelOperatorFromProject/{project_id}/{operator_id}:
+    put:
+      consumes:
+      - application/json
+      description: delete operator from project
+      operationId: delete-operator-from-project
+      parameters:
+      - description: Project ID
+        in: path
+        name: project_id
+        required: true
+        type: string
+      - description: Operator ID
+        in: path
+        name: operator_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Project'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Operator From Project
+      tags:
+      - Projects
+  /operator:
+    get:
+      consumes:
+      - application/json
+      description: get all operators
+      operationId: get-all-operators
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            items:
+              items:
+                $ref: '#/definitions/models.Operator'
+              type: array
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: Retrieves All Operators
+      tags:
+      - Operators
+    post:
+      consumes:
+      - application/json
+      description: create Operator
+      operationId: create-operator
+      parameters:
+      - description: Operator info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.Operator'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Operator'
+      security:
+      - ApiKeyAuth: []
+      summary: Add Operator to database
+      tags:
+      - Operators
+  /operator/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete operator by id
+      operationId: delete-operator-by-id
+      parameters:
+      - description: Operator ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Operator based on given ID
+      tags:
+      - Operators
+    get:
+      consumes:
+      - application/json
+      description: get operator by id
+      operationId: get-operator-by-id
+      parameters:
+      - description: Operator ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/models.Operator'
+      security:
+      - ApiKeyAuth: []
+      summary: Retrieves Operator based on given ID
+      tags:
+      - Operators
+    put:
+      consumes:
+      - application/json
+      description: update operator by id
+      operationId: update-operator-by-id
+      parameters:
+      - description: Operator ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Operator info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.Operator'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Operator'
+      security:
+      - ApiKeyAuth: []
+      summary: Update Operator based on given ID
+      tags:
+      - Operators
+  /project:
+    get:
+      consumes:
+      - application/json
+      description: get all projects
+      operationId: get-all-projects
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            items:
+              items:
+                $ref: '#/definitions/models.Project'
+              type: array
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: Retrieves All Projects
+      tags:
+      - Projects
+    post:
+      consumes:
+      - application/json
+      description: create project
+      operationId: create-project
+      parameters:
+      - description: Project info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.Project'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Project'
+      security:
+      - ApiKeyAuth: []
+      summary: Add Project to database
+      tags:
+      - Projects
+  /project/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete project by id
+      operationId: delete-project-by-id
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Project based on given ID
+      tags:
+      - Projects
+    get:
+      consumes:
+      - application/json
+      description: get project by id
+      operationId: get-project-by-id
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/models.Project'
+      security:
+      - ApiKeyAuth: []
+      summary: Retrieves Project based on given ID
+      tags:
+      - Projects
+    put:
+      consumes:
+      - application/json
+      description: update project by id
+      operationId: update-project-by-id
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Project info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.Project'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Project'
+      security:
+      - ApiKeyAuth: []
+      summary: Update Project based on given ID
+      tags:
+      - Projects
+  /sign-in:
+    post:
+      consumes:
+      - application/json
+      description: login
+      operationId: login
+      parameters:
+      - description: credentials
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/handler.Client'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: token
+          schema:
+            type: string
+      summary: SignIn
+      tags:
+      - auth
+  /sign-up:
+    post:
+      consumes:
+      - application/json
+      description: create account
+      operationId: create-account
+      parameters:
+      - description: account info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.Client'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+      summary: SignUp
+      tags:
+      - auth
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
